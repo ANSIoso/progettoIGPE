@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import application.view.Button_Character_Choose;
@@ -19,7 +21,8 @@ public class Controller_Characters_Info {
 		addFunction(this.m.getP3Button());
 		addFunction(this.m.getP4Button());
 		
-		addBackFunction(m.getBackButton());
+		addMouseBackFunction(m.getBackButton());
+		addKeyBackFunction(m);
 	}
 	
 	// funzione che serve a selezionare il personaggio sul quale si vogliono avere info con un click
@@ -36,7 +39,7 @@ public class Controller_Characters_Info {
 		});
 	}
 	
-	private void addBackFunction(Button_Navigation button) {
+	private void addMouseBackFunction(Button_Navigation button) {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -44,6 +47,17 @@ public class Controller_Characters_Info {
 				SceneHandler.getInstance().back();
 				m.resetInfo();
 				SoundHandler.getInstance().startEffect("Button_Click");
+			}
+		});
+	}
+	
+	private void addKeyBackFunction(View_Character_Info m) {
+		m.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				super.keyPressed(e);
+				
+				SceneHandler.getInstance().back();
 			}
 		});
 	}

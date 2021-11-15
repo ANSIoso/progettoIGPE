@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -13,7 +15,9 @@ public class Controller_Menu_Play {
 		addFunction(p.getVSIAButton() , "Select_char", Battle.SINGLEPLAYER);
 		addFunction(p.getPvPButton()  , "Select_char", Battle.MULTIPLAYER);
 		addFunction(p.getTrainButton(), "Select_char", Battle.TRAINING);
-		addBackFunction(p.getBackButton());
+		
+		addMouseBackFunction(p.getBackButton());
+		addKeyBackFunction(p);
 	}
 
 	// funzione per spostarsi alla battaglia e selezionare la modalità di gioco
@@ -30,7 +34,7 @@ public class Controller_Menu_Play {
 		});
 	}
 
-	private void addBackFunction(Button_Navigation button) {
+	private void addMouseBackFunction(Button_Navigation button) {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -38,6 +42,17 @@ public class Controller_Menu_Play {
 				
 				SceneHandler.getInstance().back();
 				SoundHandler.getInstance().startEffect("Button_Click");
+			}
+		});
+	}
+	
+	private void addKeyBackFunction(View_Menu_Play p) {
+		p.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				super.keyPressed(e);
+				
+				SceneHandler.getInstance().back();
 			}
 		});
 	}

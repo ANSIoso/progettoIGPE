@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -11,11 +13,24 @@ import application.view.View_Battle_Pause;
 public class Controller_Battle_Pause {
 
     public Controller_Battle_Pause (View_Battle_Pause p) {
-        addBackFunction(p.getBackButton());
+        addMouseBackFunction(p.getBackButton());
+        addKeyBackFunction(p);
+        
         addFunction(p.getExitButton());
     }
 
-    private void addBackFunction(Button_Navigation button) {
+    private void addKeyBackFunction(View_Battle_Pause p) {
+		p.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				super.keyPressed(e);
+				
+				SceneHandler.getInstance().back();
+			}
+		});
+	}
+
+	private void addMouseBackFunction(Button_Navigation button) {
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {

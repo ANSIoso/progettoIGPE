@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -29,7 +31,8 @@ public class Controller_Character_Selection {
 		
 		addNavigationFunction(this.m.getStartButton());
 		
-		addBackFunction(this.m.getBackButton());
+		addMouseBackFunction(this.m.getBackButton());
+		addKeyBackFunction(m);
 	}
 	
 	// con navigation function si intende la funzione di spostamentotra le pagine
@@ -103,7 +106,7 @@ public class Controller_Character_Selection {
 		});
 	}
 	
-	private void addBackFunction(Button_Navigation button) {
+	private void addMouseBackFunction(Button_Navigation button) {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -116,6 +119,17 @@ public class Controller_Character_Selection {
 				chooser = Battle.NOBODY;
 				
 				SoundHandler.getInstance().startEffect("Button_Click");
+			}
+		});
+	}
+	
+	private void addKeyBackFunction(View_Character_Selection m) {
+		m.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				super.keyPressed(e);
+				
+				SceneHandler.getInstance().back();
 			}
 		});
 	}

@@ -94,7 +94,7 @@ public class SceneHandler {
 		windowChanger("Title");
 
 		this.window.setVisible(true);
-		this.window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	// ogni schermata viene nel processo di "spostamento verso essa" 
