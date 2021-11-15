@@ -35,14 +35,6 @@ public class Controller_CharacterButton {
 				l.interrupt();
 				l = null;
 			}
-
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				super.mouseMoved(e);
-
-				l.interrupt();
-				l = null;
-			}
 		});
 	}
 
