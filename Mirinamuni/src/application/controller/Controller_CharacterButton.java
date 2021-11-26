@@ -17,6 +17,8 @@ public class Controller_CharacterButton {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				super.mouseEntered(e);
+				
+				System.out.println("ciao");
 
 				if (l == null) {
 					l = new Loop<Button_Character_Choose>(c);
